@@ -18,7 +18,7 @@ class FocalLoss(nn.Module):
         self.BCELoss = CustomBCELoss()
 
     def forward(self, inputss, targets):
-        inputs = F.sigmoid(inputss)
+        #inputs = F.sigmoid(inputss)
         BCE_loss = self.BCELoss(inputs, targets)
         p_t = inputs * targets + (1 - inputs) * (1 - targets)
         loss = BCE_loss * ((1 - p_t) ** self.gamma)
